@@ -1,11 +1,10 @@
-import { Fragment } from "react";
+import { useState } from 'react';
+import Header from './components/Layout/Header';
+import Meals from './components/Meals/Meals';
+import Cart from './components/Cart/Cart';
+import CartProvider from './store/CartProvider';
 
-import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
-import Cart from "./components/Cart/Cart";
-import { useState } from "react";
-
-const App = () => {
+function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -16,12 +15,12 @@ const App = () => {
   };
 
   return (
-    <Fragment>
-      {cartIsShown && <Cart onClose={hideCartHandler}></Cart>}
+    <CartProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <Meals />
-    </Fragment>
+    </CartProvider>
   );
-};
+}
 
 export default App;
