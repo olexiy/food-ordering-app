@@ -1,7 +1,9 @@
-name: CI
+name: food-ordering-app CI run
 
 on:
   push:
+    branches: [main]
+  pull_request:
     branches: [main]
 
 jobs:
